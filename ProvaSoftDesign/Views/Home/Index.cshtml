@@ -1,0 +1,84 @@
+﻿@model IEnumerable<ProvaSoftDesign.ViewModel.LivroVM>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Lista de Livros</h1>
+</div>
+
+@using (Html.BeginForm())
+{
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <label>Pesquisa por Nome</label>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input class="form-control" id="Titulo" name="Titulo" type="text" placeholder="Pesquisar">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="submit" value="Pesquisar" class="form-control btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NomeLivro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AutorLivro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataLancamento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Alugado)
+                </th>
+                <th>
+                    Detalhes
+                </th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NomeLivro)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AutorLivro)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataLancamento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Alugado)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Index", "Livro", new { id = item.Id }, null)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

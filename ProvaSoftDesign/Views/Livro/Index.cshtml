@@ -1,0 +1,53 @@
+﻿@model ProvaSoftDesign.ViewModel.LivroVM
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<div class="jumbotron">
+    <h1>Lista de Livros</h1>
+</div>
+
+@if (Model.Mensagem != null)
+{
+    <div class="jumbotron">
+        @Model.Mensagem
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-md-12">
+            @Html.LabelFor(model => model.Id, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", @readonly = "readonly" } })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            @Html.LabelFor(model => model.AutorLivro, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.AutorLivro, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", @readonly = "readonly" } })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            @Html.LabelFor(model => model.DataLancamento, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.DataLancamento, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", @readonly = "readonly" } })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            @Html.LabelFor(model => model.Alugado, htmlAttributes: new { @class = "control-label" })
+            @Html.CheckBoxFor(model => model.Alugado, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", @readonly = "readonly" } })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Alugar" class="btn btn-primary form-control" />
+        </div>
+    </div>
+}
